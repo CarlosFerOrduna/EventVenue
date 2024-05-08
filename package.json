@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "tsnd --respawn --clear src/app.ts",
+    "build": "rimraf ./dist && tsc",
+    "start": "npm run build && node dist/app.js",
     "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/compression": "^1.7.5",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.7",
@@ -23,6 +27,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "compression": "^1.7.4",
     "dotenv": "^16.4.5",
     "env-var": "^7.4.1",
     "express": "^4.19.2",
