@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { Controller } from "../entities";
 
-export class UserController extends Controller {
+export class EventTypeController extends Controller {
   create(req: Request, res: Response): void {
     throw new Error("Method not implemented.");
   }
