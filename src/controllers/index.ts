@@ -1,3 +1,4 @@
+export * from "./controller.entity";
 export * from "./event-service.controller";
 export * from "./event-type.controller";
 export * from "./hall.controller";

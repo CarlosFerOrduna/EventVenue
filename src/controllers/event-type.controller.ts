@@ -1,24 +1,24 @@
 import { Request, Response } from "express";
-import { Controller } from "../entities";
+import { Controller } from "./controller.entity";
 
 export class EventTypeController extends Controller {
-  create(req: Request, res: Response): void {
+  async create(req: Request, res: Response) {
     throw new Error("Method not implemented.");
   }
 
-  getAll(req: Request, res: Response): void {
+  async getAll(req: Request, res: Response) {
     throw new Error("Method not implemented.");
   }
 
-  getById(req: Request, res: Response): void {
+  async getById(req: Request, res: Response) {
     throw new Error("Method not implemented.");
   }
 
-  updateById(req: Request, res: Response): void {
+  async updateById(req: Request, res: Response) {
     throw new Error("Method not implemented.");
   }
 
-  deleteById(req: Request, res: Response): void {
+  async deleteById(req: Request, res: Response) {
     throw new Error("Method not implemented.");
   }
 }

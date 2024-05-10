@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { CustomError } from "./custom-error.entity";
-import { Repository } from "./repository.entity";
+import { CustomError } from "../domain";
+import { Repository } from "../repositories";
 
 export abstract class Controller {
   constructor(protected readonly repository: Repository) {}
@@ -14,8 +14,12 @@ export abstract class Controller {
   };
 
   abstract create(req: Request, res: Response): void;
+
   abstract getAll(req: Request, res: Response): void;
+
   abstract getById(req: Request, res: Response): void;
+
   abstract updateById(req: Request, res: Response): void;
+
   abstract deleteById(req: Request, res: Response): void;
 }

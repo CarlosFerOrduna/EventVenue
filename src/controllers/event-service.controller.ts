@@ -1,24 +1,62 @@
 import { Request, Response } from "express";
-import { Controller } from "../entities";
+import { CreateEventServiceDto, PaginationDto } from "../domain";
+import { Controller } from "./controller.entity";
 
 export class EventServiceController extends Controller {
-  create(req: Request, res: Response): void {
-    throw new Error("Method not implemented.");
+  async create(req: Request, res: Response) {
+    try {
+      const [error, createEventServiceDto] = CreateEventServiceDto.create(
+        req.body,
+      );
+      if (error) return res.status(400).json({ error });
+
+      const result = await this.repository.create(createEventServiceDto!);
+
+      res.status(201).json(result);
+    } catch (error) {
+      this.handleError(error, res);
+    }
   }
 
-  getAll(req: Request, res: Response): void {
-    throw new Error("Method not implemented.");
+  async getAll(req: Request, res: Response) {
+    try {
+      const { page = 1, limit = 10 } = req.query;
+      const [error, paginationDto] = PaginationDto.create(+page, +limit);
+      if (error) return res.status(400).json({ error });
+
+      const result = await this.repository.getAll(paginationDto!);
+
+      res.json(result);
+    } catch (error) {
+      this.handleError(error, res);
+    }
   }
 
-  getById(req: Request, res: Response): void {
-    throw new Error("Method not implemented.");
+  async getById(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const result = await this.repository.getById(id);
+      if (!result) {
+        return res.status(404).json({ message: "event service not found" });
+      }
+
+      res.json(result);
+    } catch (error) {
+      this.handleError(error, res);
+    }
   }
 
-  updateById(req: Request, res: Response): void {
-    throw new Error("Method not implemented.");
+  async updateById(req: Request, res: Response) {
+    try {
+    } catch (error) {
+      this.handleError(error, res);
+    }
   }
 
-  deleteById(req: Request, res: Response): void {
-    throw new Error("Method not implemented.");
+  async deleteById(req: Request, res: Response) {
+    try {
+    } catch (error) {
+      this.handleError(error, res);
+    }
   }
 }

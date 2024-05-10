@@ -2,3 +2,4 @@
 /dist/
 /mysql/
 /package-lock.json
+migrations/

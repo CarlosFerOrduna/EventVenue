@@ -1,3 +1,24 @@
-import { Service } from "../entities";
+import { Dto, PaginationDto } from "../domain";
+import { Service } from "./service.entity";
 
-export class EventServiceService extends Service {}
+export class EventServiceService extends Service {
+  async create(entityDto: Dto): Promise<Dto> {
+    throw new Error("Method not implemented.");
+  }
+
+  async getAll(paginationDto: PaginationDto): Promise<Dto[]> {
+    throw new Error("Method not implemented.");
+  }
+
+  async getById(id: string): Promise<Dto> {
+    throw new Error("Method not implemented.");
+  }
+
+  async updateById(dto: Dto): Promise<Dto> {
+    throw new Error("Method not implemented.");
+  }
+
+  async deleteById(id: string): Promise<boolean> {
+    throw new Error("Method not implemented.");
+  }
+}

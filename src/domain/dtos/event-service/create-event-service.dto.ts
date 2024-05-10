@@ -1,4 +1,4 @@
-import { Dto } from "../../entities";
+import { Dto } from "../dto.entity";
 
 export class CreateEventServiceDto extends Dto {
   private constructor(
@@ -8,10 +8,10 @@ export class CreateEventServiceDto extends Dto {
     super();
   }
 
-  static create(
-    name: string,
-    price: number,
-  ): [string?, CreateEventServiceDto?] {
+  static create(props: {
+    [key: string]: any;
+  }): [string?, CreateEventServiceDto?] {
+    const { name, price } = props;
     if (name.trim().length < 1) return ["Name is not valid"];
     if (isNaN(price)) return ["Price must be number"];
     if (price <= 0) return ["Price must be greater than 0"];

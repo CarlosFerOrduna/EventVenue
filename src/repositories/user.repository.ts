@@ -1,23 +1,24 @@
-import { Dto, Repository } from "../entities";
+import { Dto } from "../domain";
+import { Repository } from "./repository.entity";
 
 export class UserRepository extends Repository {
-  create(entityDto: Dto): Dto {
+  async create(entityDto: Dto): Promise<Dto> {
     throw new Error("Method not implemented.");
   }
 
-  getAll(paginationDto: Dto): Dto[] {
+  async getAll(paginationDto: Dto): Promise<Dto[]> {
     throw new Error("Method not implemented.");
   }
 
-  getById(dto: Dto): Dto {
+  async getById(dto: Dto): Promise<Dto> {
     throw new Error("Method not implemented.");
   }
 
-  updateById(dto: Dto): Dto {
+  async updateById(dto: Dto): Promise<Dto> {
     throw new Error("Method not implemented.");
   }
 
-  deleteById(id: number): boolean {
+  async deleteById(id: string): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
 }

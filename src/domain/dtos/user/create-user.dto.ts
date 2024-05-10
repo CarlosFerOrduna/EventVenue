@@ -1,5 +1,5 @@
-import { regularExps } from "../../config";
-import { Dto } from "../../entities";
+import { regularExps } from "../../../config";
+import { Dto } from "../dto.entity";
 
 enum Role {
   USER = "USER",
@@ -16,12 +16,8 @@ export class CreateUserDto extends Dto {
     super();
   }
 
-  static create(
-    email: string,
-    names?: string,
-    surnames?: string,
-    role?: Role,
-  ): [string?, CreateUserDto?] {
+  static create(props: { [key: string]: any }): [string?, CreateUserDto?] {
+    const { email, names = null, surnames = null, role = null } = props;
     if (regularExps.email.test(email)) return ["Email is not valid"];
     if (!!names && names.trim().length < 1) return ["Names is not valid"];
     if (!!surnames && surnames.trim().length < 1)
