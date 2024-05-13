@@ -20,6 +20,10 @@ export class UserAddressEntity {
       deletedAt,
     } = obj;
 
+    if (!idUserAddress) CustomError.badRequest("Missing idUserAddress");
+    if (!idUser) CustomError.badRequest("Missing idUser");
+    if (!idAddress) CustomError.badRequest("Missing idAddress");
+
     return new UserAddressEntity(
       idUserAddress,
       idUser,

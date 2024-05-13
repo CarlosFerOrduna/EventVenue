@@ -28,6 +28,13 @@ export class ReservationEntity {
       deletedAt,
     } = obj;
 
+    if (!idReservation) CustomError.badRequest("Missing idReservation");
+    if (!idVenue) CustomError.badRequest("Missing idVenue");
+    if (!idEventType) CustomError.badRequest("Missing idEventType");
+    if (!!date && !isNaN(date)) CustomError.badRequest("date must be a date");
+    if (!!description && !isNaN(description))
+      CustomError.badRequest("description must be a string");
+
     return new ReservationEntity(
       idReservation,
       idVenue,

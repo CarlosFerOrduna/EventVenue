@@ -14,6 +14,12 @@ export class EventTypeEntity {
     const { idEventType, name, createdAt, updatedAt, description, deletedAt } =
       obj;
 
+    if (!idEventType) CustomError.badRequest("Missing idEventType");
+    if (!name) CustomError.badRequest("Missing name");
+    if (!!name && !isNaN(name)) CustomError.badRequest("name must be a string");
+    if (!!description && !isNaN(description))
+      CustomError.badRequest("description must be a string");
+
     return new EventTypeEntity(
       idEventType,
       name,

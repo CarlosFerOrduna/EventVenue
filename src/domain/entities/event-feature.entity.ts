@@ -22,6 +22,15 @@ export class EventFeatureEntity {
       deletedAt,
     } = obj;
 
+    if (!idEventFeature) CustomError.badRequest("Missing idEventFeature");
+    if (!name) CustomError.badRequest("Missing name");
+    if (!isNaN(name)) CustomError.badRequest("name must be a string");
+    if (!description) CustomError.badRequest("Missing description");
+    if (!isNaN(description))
+      CustomError.badRequest("description must be a string");
+    if (!price) CustomError.badRequest("Missing price");
+    if (isNaN(price)) CustomError.badRequest("price must be a number");
+
     return new EventFeatureEntity(
       idEventFeature,
       name,

@@ -20,6 +20,11 @@ export class EventTypeEventFeatureEntity {
       deletedAt,
     } = obj;
 
+    if (!idEventTypeEventFeature)
+      CustomError.badRequest("Missing idEventTypeEventFeature");
+    if (!idEventType) CustomError.badRequest("Missing idEventType");
+    if (!idEventFeature) CustomError.badRequest("Missing idEventFeature");
+
     return new EventTypeEventFeatureEntity(
       idEventTypeEventFeature,
       idEventType,

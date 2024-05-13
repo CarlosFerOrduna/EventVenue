@@ -20,6 +20,11 @@ export class EventTypeVenueEntity {
       deletedAt,
     } = obj;
 
+    if (!idEventTypeOnVenue)
+      CustomError.badRequest("Missing idEventTypeOnVenue");
+    if (!idVenue) CustomError.badRequest("Missing idVenue");
+    if (!idEventType) CustomError.badRequest("Missing idEventType");
+
     return new EventTypeVenueEntity(
       idEventTypeOnVenue,
       idVenue,

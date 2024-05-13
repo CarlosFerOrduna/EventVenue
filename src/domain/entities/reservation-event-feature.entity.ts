@@ -10,6 +10,11 @@ export class ReservationEventFeatureEntity {
   static fromObject(obj: { [key: string]: any }) {
     const { idReservationEventFeature, idReservation, idEventFeature } = obj;
 
+    if (!idReservationEventFeature)
+      CustomError.badRequest("Missing idReservationEventFeature");
+    if (!idReservation) CustomError.badRequest("Missing idReservation");
+    if (!idEventFeature) CustomError.badRequest("Missing idEventFeature");
+
     return new ReservationEventFeatureEntity(
       idReservationEventFeature,
       idReservation,

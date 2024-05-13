@@ -34,6 +34,25 @@ export class AddressEntity {
       deletedAt,
     } = obj;
 
+    if (!idAddress) CustomError.badRequest("Missing idAddress");
+    if (!!streetName && !isNaN(streetName))
+      CustomError.badRequest("streetName must be a string");
+    if (!!streetNumber && isNaN(streetNumber))
+      CustomError.badRequest("streetNumber must be a number");
+    if (!!zipCode && isNaN(zipCode))
+      CustomError.badRequest("zipCode must be a number");
+    if (!!neighborhood && !isNaN(neighborhood))
+      CustomError.badRequest("neighborhood must be a string");
+    if (!!floor && isNaN(floor))
+      CustomError.badRequest("floor must be a number");
+    if (!!apartment && !isNaN(apartment))
+      CustomError.badRequest("apartment must be a string");
+    if (!!city && !isNaN(city)) CustomError.badRequest("city must be a string");
+    if (!!state && !isNaN(state))
+      CustomError.badRequest("state must be a string");
+    if (!!country && !isNaN(country))
+      CustomError.badRequest("country must be a string");
+
     return new AddressEntity(
       idAddress,
       createdAt,

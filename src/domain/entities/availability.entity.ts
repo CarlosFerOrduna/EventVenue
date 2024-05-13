@@ -24,6 +24,13 @@ export class AvailabilityEntity {
       deletedAt,
     } = obj;
 
+    if (!idAvailability) CustomError.badRequest("Missing idAvailability");
+    if (!dateOfWeek) CustomError.badRequest("Missing dateOfWeek");
+    if (!startTime) CustomError.badRequest("Missing startTime");
+    if (!endTime) CustomError.badRequest("Missing endTime");
+    if (!!description && !isNaN(description))
+      CustomError.badRequest("description must be a string");
+
     return new AvailabilityEntity(
       idAvailability,
       dateOfWeek,

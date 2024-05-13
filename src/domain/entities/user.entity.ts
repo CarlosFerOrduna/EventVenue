@@ -27,6 +27,17 @@ export class UserEntity {
       deletedAt,
     } = obj;
 
+    if (!idUser) CustomError.badRequest("Missing idUser");
+    if (!email) CustomError.badRequest("Missing email");
+    if (!role) CustomError.badRequest("Missing role");
+    if (!password) CustomError.badRequest("Missing password");
+    if (!names) CustomError.badRequest("Missing names");
+    if (!!names && !isNaN(names))
+      CustomError.badRequest("names must be a string");
+    if (!surnames) CustomError.badRequest("Missing surnames");
+    if (!!surnames && !isNaN(surnames))
+      CustomError.badRequest("surnames must be a string");
+
     return new UserEntity(
       idUser,
       email,
