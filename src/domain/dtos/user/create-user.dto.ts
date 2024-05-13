@@ -1,17 +1,13 @@
+import { Role } from "@prisma/client";
 import { regularExps } from "../../../config";
-import { Dto } from "../dto.entity";
-
-enum Role {
-  USER = "USER",
-  ADMIN = "ADMIN",
-}
+import { Dto } from "../dto";
 
 export class CreateUserDto extends Dto {
   private constructor(
-    public readonly email: string,
-    public readonly names?: string,
-    public readonly surnames?: string,
-    public readonly role?: Role,
+    public email: string,
+    public names?: string,
+    public surnames?: string,
+    public role?: Role,
   ) {
     super();
   }

@@ -1,24 +1,24 @@
-import { Dto } from "../domain";
-import { Repository } from "./repository.entity";
+import { Dto, EventTypeEntity } from "../domain";
+import { Repository } from "./repository";
 
-export class EventTypeRepository extends Repository {
-  async create(entityDto: Dto): Promise<Dto> {
-    throw new Error("Method not implemented.");
+export class EventTypeRepository extends Repository<EventTypeEntity> {
+  async create(entityDto: Dto): Promise<EventTypeEntity> {
+    return this.service.create(entityDto);
   }
 
-  async getAll(paginationDto: Dto): Promise<Dto[]> {
-    throw new Error("Method not implemented.");
+  async getAll(): Promise<EventTypeEntity[]> {
+    return this.service.getAll();
   }
 
-  async getById(dto: Dto): Promise<Dto> {
-    throw new Error("Method not implemented.");
+  async getById(id: string): Promise<EventTypeEntity> {
+    return this.service.getById(id);
   }
 
-  async updateById(dto: Dto): Promise<Dto> {
-    throw new Error("Method not implemented.");
+  async updateById(dto: Dto): Promise<EventTypeEntity> {
+    return this.service.updateById(dto);
   }
 
   async deleteById(id: string): Promise<boolean> {
-    throw new Error("Method not implemented.");
+    return this.service.deleteById(id);
   }
 }

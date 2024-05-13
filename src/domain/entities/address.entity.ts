@@ -1,6 +1,7 @@
 import { CustomError } from "../errors";
+import { Entity } from "./entity";
 
-export class AddressEntity {
+export class AddressEntity extends Entity {
   constructor(
     public idAddress: string,
     public createdAt: Date,
@@ -15,7 +16,9 @@ export class AddressEntity {
     public state?: string,
     public country?: string,
     public deletedAt?: Date,
-  ) {}
+  ) {
+    super();
+  }
 
   static fromObject(obj: { [key: string]: any }) {
     const {

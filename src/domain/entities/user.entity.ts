@@ -1,7 +1,8 @@
 import { Role } from "@prisma/client";
 import { CustomError } from "../errors";
+import { Entity } from "./entity";
 
-export class UserEntity {
+export class UserEntity extends Entity {
   constructor(
     public idUser: string,
     public email: string,
@@ -12,7 +13,9 @@ export class UserEntity {
     public names?: string,
     public surnames?: string,
     public deletedAt?: Date,
-  ) {}
+  ) {
+    super();
+  }
 
   static fromObject(obj: { [key: string]: any }) {
     const {

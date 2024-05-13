@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { CreateUserDto, UserEntity } from "../domain";
+import { CreateVenueDto, VenueEntity } from "../domain";
 import { Controller } from "./controller";
 
-export class UserController extends Controller<UserEntity> {
+export class VenueController extends Controller<VenueEntity> {
   async create(req: Request, res: Response) {
     try {
-      const [error, createEventServiceDto] = CreateUserDto.create(req.body);
+      const [error, createEventServiceDto] = CreateVenueDto.create(req.body);
       if (error) return res.status(400).json({ error });
 
       const result = await this.repository.create(createEventServiceDto!);
@@ -31,7 +31,7 @@ export class UserController extends Controller<UserEntity> {
       const { id } = req.params;
       const result = await this.repository.getById(id);
       if (!result) {
-        return res.status(404).json({ message: "User not found" });
+        return res.status(404).json({ message: "Venue not found" });
       }
 
       res.json(result);

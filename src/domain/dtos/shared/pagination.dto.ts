@@ -1,4 +1,4 @@
-import { Dto } from "../dto.entity";
+import { Dto } from "../dto";
 
 export class PaginationDto extends Dto {
   private constructor(

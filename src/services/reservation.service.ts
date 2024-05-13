@@ -1,20 +1,20 @@
-import { Dto, EventTypeEntity } from "../domain";
+import { Dto, ReservationEntity } from "../domain";
 import { Service } from "./service";
 
-export class EventTypeService extends Service<EventTypeEntity> {
-  async create(entityDto: Dto): Promise<EventTypeEntity> {
+export class ReservationService extends Service<ReservationEntity> {
+  async create(entityDto: Dto): Promise<ReservationEntity> {
     throw new Error("Method not implemented.");
   }
 
-  async getAll(): Promise<EventTypeEntity[]> {
+  async getAll(): Promise<ReservationEntity[]> {
     throw new Error("Method not implemented.");
   }
 
-  async getById(id: string): Promise<EventTypeEntity> {
+  async getById(id: string): Promise<ReservationEntity> {
     throw new Error("Method not implemented.");
   }
 
-  async updateById(dto: Dto): Promise<EventTypeEntity> {
+  async updateById(dto: Dto): Promise<ReservationEntity> {
     throw new Error("Method not implemented.");
   }
 

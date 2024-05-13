@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { CustomError } from "../domain";
+import { CustomError, Entity } from "../domain";
 import { Repository } from "../repositories";
 
-export abstract class Controller {
-  constructor(protected readonly repository: Repository) {}
+export abstract class Controller<T extends Entity> {
+  constructor(protected readonly repository: Repository<T>) {}
 
   protected handleError = (error: unknown, res: Response) => {
     if (error instanceof CustomError) {

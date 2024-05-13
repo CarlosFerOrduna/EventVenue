@@ -1,6 +1,6 @@
 import { CustomError } from "../errors";
 
-export class EventTypeEntity {
+export class EventTypeEntity extends Entity {
   constructor(
     public idEventType: string,
     public name: string,
@@ -8,7 +8,9 @@ export class EventTypeEntity {
     public updatedAt: Date,
     public description?: string,
     public deletedAt?: Date,
-  ) {}
+  ) {
+    super();
+  }
 
   static fromObject(obj: { [key: string]: any }) {
     const { idEventType, name, createdAt, updatedAt, description, deletedAt } =

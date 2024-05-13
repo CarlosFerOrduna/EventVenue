@@ -1,14 +1,17 @@
-import { Dto } from "../dto.entity";
+import { Dto } from "../dto";
 
 export class CreateEventTypeDto extends Dto {
-  private constructor(public readonly name: string) {
+  private constructor(public name: string, public description?: string) {
     super();
   }
 
   static create(props: { [key: string]: any }): [string?, CreateEventTypeDto?] {
-    const { name } = props;
-    if (name.trim().length < 1) return ["Name is not valid"];
+    const { name, description } = props;
 
-    return [undefined, new CreateEventTypeDto(name)];
+    if (!!name && name.trim().length < 1) return ["name is not valid"];
+    if (!!description && description.trim().length < 1)
+      return ["description is not valid"];
+
+    return [undefined, new CreateEventTypeDto(name, description)];
   }
 }

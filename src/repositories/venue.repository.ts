@@ -1,20 +1,20 @@
-import { UserEntity, Dto } from "../domain";
+import { VenueEntity, Dto } from "../domain";
 import { Repository } from "./repository";
 
-export class UserRepository extends Repository<UserEntity> {
-  async create(entityDto: Dto): Promise<UserEntity> {
+export class VenueRepository extends Repository<VenueEntity> {
+  async create(entityDto: Dto): Promise<VenueEntity> {
     return this.service.create(entityDto);
   }
 
-  async getAll(): Promise<UserEntity[]> {
+  async getAll(): Promise<VenueEntity[]> {
     return this.service.getAll();
   }
 
-  async getById(id: string): Promise<UserEntity> {
+  async getById(id: string): Promise<VenueEntity> {
     return this.service.getById(id);
   }
 
-  async updateById(dto: Dto): Promise<UserEntity> {
+  async updateById(dto: Dto): Promise<VenueEntity> {
     return this.service.updateById(dto);
   }
 

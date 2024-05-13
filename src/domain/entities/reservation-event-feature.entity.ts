@@ -1,11 +1,13 @@
 import { CustomError } from "../errors";
 
-export class ReservationEventFeatureEntity {
+export class ReservationEventFeatureEntity extends Entity {
   constructor(
     public idReservationEventFeature: string,
     public idReservation: string,
     public idEventFeature: string,
-  ) {}
+  ) {
+    super();
+  }
 
   static fromObject(obj: { [key: string]: any }) {
     const { idReservationEventFeature, idReservation, idEventFeature } = obj;

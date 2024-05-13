@@ -1,5 +1,6 @@
 export * from "./address.entity";
 export * from "./availability.entity";
+export * from "./entity";
 export * from "./event-feature.entity";
 export * from "./event-type-event-feature.entity";
 export * from "./event-type-venue.entity";
