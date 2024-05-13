@@ -1,4 +1,5 @@
 import { CustomError } from "../errors";
+import { Entity } from "./entity";
 
 export class EventTypeEntity extends Entity {
   constructor(

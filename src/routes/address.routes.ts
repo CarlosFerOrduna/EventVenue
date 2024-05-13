@@ -10,7 +10,9 @@ export class AddressRoutes {
     const service = new AddressService();
     const repository = new AddressRepository(service);
     const controller = new AddressController(repository);
-
+    console.log({ service });
+    console.log({ repository });
+    console.log({ controller });
     router.get("/", controller.getAll);
     router.get("/:id", controller.getById);
     router.post("/", controller.create);
