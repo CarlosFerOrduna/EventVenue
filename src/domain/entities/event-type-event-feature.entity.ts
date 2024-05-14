@@ -1,5 +1,5 @@
-import { CustomError } from "../errors";
-import { Entity } from "./entity";
+import { CustomError } from '../errors'
+import { Entity } from './entity'
 
 export class EventTypeEventFeatureEntity extends Entity {
   constructor(
@@ -10,23 +10,15 @@ export class EventTypeEventFeatureEntity extends Entity {
     public updatedAt: Date,
     public deletedAt?: Date,
   ) {
-    super();
+    super()
   }
 
   static fromObject(obj: { [key: string]: any }) {
-    const {
-      idEventTypeEventFeature,
-      idEventType,
-      idEventFeature,
-      createdAt,
-      updatedAt,
-      deletedAt,
-    } = obj;
+    const { idEventTypeEventFeature, idEventType, idEventFeature, createdAt, updatedAt, deletedAt } = obj
 
-    if (!idEventTypeEventFeature)
-      CustomError.badRequest("Missing idEventTypeEventFeature");
-    if (!idEventType) CustomError.badRequest("Missing idEventType");
-    if (!idEventFeature) CustomError.badRequest("Missing idEventFeature");
+    if (!idEventTypeEventFeature) CustomError.badRequest('Missing idEventTypeEventFeature')
+    if (!idEventType) CustomError.badRequest('Missing idEventType')
+    if (!idEventFeature) CustomError.badRequest('Missing idEventFeature')
 
     return new EventTypeEventFeatureEntity(
       idEventTypeEventFeature,
@@ -35,6 +27,6 @@ export class EventTypeEventFeatureEntity extends Entity {
       createdAt,
       updatedAt,
       deletedAt,
-    );
+    )
   }
 }

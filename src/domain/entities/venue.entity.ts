@@ -1,5 +1,5 @@
-import { CustomError } from "../errors";
-import { Entity } from "./entity";
+import { CustomError } from '../errors'
+import { Entity } from './entity'
 
 export class VenueEntity extends Entity {
   constructor(
@@ -11,34 +11,18 @@ export class VenueEntity extends Entity {
     public capacity?: number,
     public deletedAt?: Date,
   ) {
-    super();
+    super()
   }
 
   static fromObject(obj: { [key: string]: any }) {
-    const {
-      idVenue,
-      name,
-      createdAt,
-      updatedAt,
-      description,
-      capacity,
-      deletedAt,
-    } = obj;
+    const { idVenue, name, createdAt, updatedAt, description, capacity, deletedAt } = obj
 
-    if (!name) CustomError.badRequest("Missing name");
-    if (!description) CustomError.badRequest("Missing description");
-    if (!isNaN(description)) CustomError.badRequest("Description is not valid");
-    if (!capacity) CustomError.badRequest("Missing capacity");
-    if (!isNaN(capacity)) CustomError.badRequest("Capacity is not valid");
+    if (!name) CustomError.badRequest('Missing name')
+    if (!description) CustomError.badRequest('Missing description')
+    if (!isNaN(description)) CustomError.badRequest('Description is not valid')
+    if (!capacity) CustomError.badRequest('Missing capacity')
+    if (!isNaN(capacity)) CustomError.badRequest('Capacity is not valid')
 
-    return new VenueEntity(
-      idVenue,
-      name,
-      createdAt,
-      updatedAt,
-      description,
-      capacity,
-      deletedAt,
-    );
+    return new VenueEntity(idVenue, name, createdAt, updatedAt, description, capacity, deletedAt)
   }
 }

@@ -1,5 +1,5 @@
-import { CustomError } from "../errors";
-import { Entity } from "./entity";
+import { CustomError } from '../errors'
+import { Entity } from './entity'
 
 export class VenueAvailabilityEntity extends Entity {
   constructor(
@@ -10,31 +10,16 @@ export class VenueAvailabilityEntity extends Entity {
     public updatedAt: Date,
     public deletedAt?: Date,
   ) {
-    super();
+    super()
   }
 
   static fromObject(obj: { [key: string]: any }) {
-    const {
-      idVenueAvailability,
-      idVenue,
-      idAvailability,
-      createdAt,
-      updatedAt,
-      deletedAt,
-    } = obj;
+    const { idVenueAvailability, idVenue, idAvailability, createdAt, updatedAt, deletedAt } = obj
 
-    if (!idVenueAvailability)
-      CustomError.badRequest("Missing idVenueAvailability");
-    if (!idVenue) CustomError.badRequest("Missing idVenue");
-    if (!idAvailability) CustomError.badRequest("Missing idAvailability");
+    if (!idVenueAvailability) CustomError.badRequest('Missing idVenueAvailability')
+    if (!idVenue) CustomError.badRequest('Missing idVenue')
+    if (!idAvailability) CustomError.badRequest('Missing idAvailability')
 
-    return new VenueAvailabilityEntity(
-      idVenueAvailability,
-      idVenue,
-      idAvailability,
-      createdAt,
-      updatedAt,
-      deletedAt,
-    );
+    return new VenueAvailabilityEntity(idVenueAvailability, idVenue, idAvailability, createdAt, updatedAt, deletedAt)
   }
 }

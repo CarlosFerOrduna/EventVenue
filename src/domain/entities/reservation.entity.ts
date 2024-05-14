@@ -1,5 +1,5 @@
-import { CustomError } from "../errors";
-import { Entity } from "./entity";
+import { CustomError } from '../errors'
+import { Entity } from './entity'
 
 export class ReservationEntity extends Entity {
   constructor(
@@ -14,29 +14,17 @@ export class ReservationEntity extends Entity {
     public end?: Date,
     public deletedAt?: Date,
   ) {
-    super();
+    super()
   }
 
   static fromObject(obj: { [key: string]: any }) {
-    const {
-      idReservation,
-      idVenue,
-      idEventType,
-      date,
-      createdAt,
-      updatedAt,
-      description,
-      start,
-      end,
-      deletedAt,
-    } = obj;
+    const { idReservation, idVenue, idEventType, date, createdAt, updatedAt, description, start, end, deletedAt } = obj
 
-    if (!idReservation) CustomError.badRequest("Missing idReservation");
-    if (!idVenue) CustomError.badRequest("Missing idVenue");
-    if (!idEventType) CustomError.badRequest("Missing idEventType");
-    if (!!date && !isNaN(date)) CustomError.badRequest("date must be a date");
-    if (!!description && !isNaN(description))
-      CustomError.badRequest("description must be a string");
+    if (!idReservation) CustomError.badRequest('Missing idReservation')
+    if (!idVenue) CustomError.badRequest('Missing idVenue')
+    if (!idEventType) CustomError.badRequest('Missing idEventType')
+    if (!!date && !isNaN(date)) CustomError.badRequest('date must be a date')
+    if (!!description && !isNaN(description)) CustomError.badRequest('description must be a string')
 
     return new ReservationEntity(
       idReservation,
@@ -49,6 +37,6 @@ export class ReservationEntity extends Entity {
       start,
       end,
       deletedAt,
-    );
+    )
   }
 }

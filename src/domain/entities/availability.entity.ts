@@ -1,5 +1,5 @@
-import { CustomError } from "../errors";
-import { Entity } from "./entity";
+import { CustomError } from '../errors'
+import { Entity } from './entity'
 
 export class AvailabilityEntity extends Entity {
   constructor(
@@ -12,27 +12,17 @@ export class AvailabilityEntity extends Entity {
     public description?: string,
     public deletedAt?: Date,
   ) {
-    super();
+    super()
   }
 
   static fromObject(obj: { [key: string]: any }) {
-    const {
-      idAvailability,
-      dateOfWeek,
-      startTime,
-      endTime,
-      createdAt,
-      updatedAt,
-      description,
-      deletedAt,
-    } = obj;
+    const { idAvailability, dateOfWeek, startTime, endTime, createdAt, updatedAt, description, deletedAt } = obj
 
-    if (!idAvailability) CustomError.badRequest("Missing idAvailability");
-    if (!dateOfWeek) CustomError.badRequest("Missing dateOfWeek");
-    if (!startTime) CustomError.badRequest("Missing startTime");
-    if (!endTime) CustomError.badRequest("Missing endTime");
-    if (!!description && !isNaN(description))
-      CustomError.badRequest("description must be a string");
+    if (!idAvailability) CustomError.badRequest('Missing idAvailability')
+    if (!dateOfWeek) CustomError.badRequest('Missing dateOfWeek')
+    if (!startTime) CustomError.badRequest('Missing startTime')
+    if (!endTime) CustomError.badRequest('Missing endTime')
+    if (!!description && !isNaN(description)) CustomError.badRequest('description must be a string')
 
     return new AvailabilityEntity(
       idAvailability,
@@ -43,6 +33,6 @@ export class AvailabilityEntity extends Entity {
       updatedAt,
       description,
       deletedAt,
-    );
+    )
   }
 }

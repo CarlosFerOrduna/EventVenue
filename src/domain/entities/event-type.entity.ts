@@ -1,5 +1,5 @@
-import { CustomError } from "../errors";
-import { Entity } from "./entity";
+import { CustomError } from '../errors'
+import { Entity } from './entity'
 
 export class EventTypeEntity extends Entity {
   constructor(
@@ -10,26 +10,17 @@ export class EventTypeEntity extends Entity {
     public description?: string,
     public deletedAt?: Date,
   ) {
-    super();
+    super()
   }
 
   static fromObject(obj: { [key: string]: any }) {
-    const { idEventType, name, createdAt, updatedAt, description, deletedAt } =
-      obj;
+    const { idEventType, name, createdAt, updatedAt, description, deletedAt } = obj
 
-    if (!idEventType) CustomError.badRequest("Missing idEventType");
-    if (!name) CustomError.badRequest("Missing name");
-    if (!!name && !isNaN(name)) CustomError.badRequest("name must be a string");
-    if (!!description && !isNaN(description))
-      CustomError.badRequest("description must be a string");
+    if (!idEventType) CustomError.badRequest('Missing idEventType')
+    if (!name) CustomError.badRequest('Missing name')
+    if (!!name && !isNaN(name)) CustomError.badRequest('name must be a string')
+    if (!!description && !isNaN(description)) CustomError.badRequest('description must be a string')
 
-    return new EventTypeEntity(
-      idEventType,
-      name,
-      createdAt,
-      updatedAt,
-      description,
-      deletedAt,
-    );
+    return new EventTypeEntity(idEventType, name, createdAt, updatedAt, description, deletedAt)
   }
 }

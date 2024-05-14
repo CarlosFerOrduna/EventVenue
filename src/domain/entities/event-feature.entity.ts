@@ -1,5 +1,5 @@
-import { CustomError } from "../errors";
-import { Entity } from "./entity";
+import { CustomError } from '../errors'
+import { Entity } from './entity'
 
 export class EventFeatureEntity extends Entity {
   constructor(
@@ -11,37 +11,20 @@ export class EventFeatureEntity extends Entity {
     public updatedAt: Date,
     public deletedAt?: Date,
   ) {
-    super();
+    super()
   }
 
   static fromObject(obj: { [key: string]: any }) {
-    const {
-      idEventFeature,
-      name,
-      description,
-      price,
-      createdAt,
-      updatedAt,
-      deletedAt,
-    } = obj;
+    const { idEventFeature, name, description, price, createdAt, updatedAt, deletedAt } = obj
 
-    if (!idEventFeature) CustomError.badRequest("Missing idEventFeature");
-    if (!name) CustomError.badRequest("Missing name");
-    if (!isNaN(name)) CustomError.badRequest("name must be a string");
-    if (!description) CustomError.badRequest("Missing description");
-    if (!isNaN(description))
-      CustomError.badRequest("description must be a string");
-    if (!price) CustomError.badRequest("Missing price");
-    if (isNaN(price)) CustomError.badRequest("price must be a number");
+    if (!idEventFeature) CustomError.badRequest('Missing idEventFeature')
+    if (!name) CustomError.badRequest('Missing name')
+    if (!isNaN(name)) CustomError.badRequest('name must be a string')
+    if (!description) CustomError.badRequest('Missing description')
+    if (!isNaN(description)) CustomError.badRequest('description must be a string')
+    if (!price) CustomError.badRequest('Missing price')
+    if (isNaN(price)) CustomError.badRequest('price must be a number')
 
-    return new EventFeatureEntity(
-      idEventFeature,
-      name,
-      description,
-      price,
-      createdAt,
-      updatedAt,
-      deletedAt,
-    );
+    return new EventFeatureEntity(idEventFeature, name, description, price, createdAt, updatedAt, deletedAt)
   }
 }

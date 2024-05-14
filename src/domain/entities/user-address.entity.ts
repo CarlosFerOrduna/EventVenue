@@ -1,5 +1,5 @@
-import { CustomError } from "../errors";
-import { Entity } from "./entity";
+import { CustomError } from '../errors'
+import { Entity } from './entity'
 
 export class UserAddressEntity extends Entity {
   constructor(
@@ -10,30 +10,16 @@ export class UserAddressEntity extends Entity {
     public updatedAt: Date,
     public deletedAt?: Date,
   ) {
-    super();
+    super()
   }
 
   static fromObject(obj: { [key: string]: any }) {
-    const {
-      idUserAddress,
-      idUser,
-      idAddress,
-      createdAt,
-      updatedAt,
-      deletedAt,
-    } = obj;
+    const { idUserAddress, idUser, idAddress, createdAt, updatedAt, deletedAt } = obj
 
-    if (!idUserAddress) CustomError.badRequest("Missing idUserAddress");
-    if (!idUser) CustomError.badRequest("Missing idUser");
-    if (!idAddress) CustomError.badRequest("Missing idAddress");
+    if (!idUserAddress) CustomError.badRequest('Missing idUserAddress')
+    if (!idUser) CustomError.badRequest('Missing idUser')
+    if (!idAddress) CustomError.badRequest('Missing idAddress')
 
-    return new UserAddressEntity(
-      idUserAddress,
-      idUser,
-      idAddress,
-      createdAt,
-      updatedAt,
-      deletedAt,
-    );
+    return new UserAddressEntity(idUserAddress, idUser, idAddress, createdAt, updatedAt, deletedAt)
   }
 }

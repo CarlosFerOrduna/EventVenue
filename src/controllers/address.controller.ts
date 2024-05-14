@@ -1,56 +1,66 @@
-import { Request, Response } from "express";
-import { AddressEntity, CreateAddressDto } from "../domain";
-import { Controller } from "./controller";
+import { Request, Response } from 'express'
+import { AddressEntity, CreateAddressDto, UpdateAddressDto } from '../domain'
+import { Controller } from './controller'
 
 export class AddressController extends Controller<AddressEntity> {
-  async create(req: Request, res: Response) {
+  create = async (req: Request, res: Response) => {
     try {
-      const [error, createEventServiceDto] = CreateAddressDto.create(req.body);
-      if (error) return res.status(400).json({ error });
+      const [error, createEventServiceDto] = CreateAddressDto.create(req.body)
+      if (error) return res.status(400).json({ error })
 
-      const result = await this.repository.create(createEventServiceDto!);
+      const result = await this.repository.create(createEventServiceDto!)
 
-      res.status(201).json(result);
+      return res.status(201).json(result)
     } catch (error) {
-      this.handleError(error, res);
+      this.handleError(error, res)
     }
   }
 
-  async getAll(req: Request, res: Response) {
+  getAll = async (req: Request, res: Response) => {
     try {
-      const result = await this.repository.getAll();
+      const result = await this.repository.getAll()
 
-      res.json(result);
+      return res.json(result)
     } catch (error) {
-      this.handleError(error, res);
+      this.handleError(error, res)
     }
   }
 
-  async getById(req: Request, res: Response) {
+  getById = async (req: Request, res: Response) => {
     try {
-      const { id } = req.params;
-      const result = await this.repository.getById(id);
+      const { id } = req.params
+      const result = await this.repository.getById(id)
       if (!result) {
-        return res.status(404).json({ message: "Address not found" });
+        return res.status(404).json({ message: 'Address not found' })
       }
 
-      res.json(result);
+      return res.json(result)
     } catch (error) {
-      this.handleError(error, res);
+      this.handleError(error, res)
     }
   }
 
-  async updateById(req: Request, res: Response) {
+  updateById = async (req: Request, res: Response) => {
     try {
+      const [error, updateAddressDto] = UpdateAddressDto.update({ idAddress: req.params.id, ...req.body })
+      if (error) return res.status(400).json({ error })
+
+      const result = await this.repository.updateById(updateAddressDto!)
+
+      return res.json(result)
     } catch (error) {
-      this.handleError(error, res);
+      this.handleError(error, res)
     }
   }
 
-  async deleteById(req: Request, res: Response) {
+  deleteById = async (req: Request, res: Response) => {
     try {
+      const result = await this.repository.deleteById(req.params.id)
+      if (!result) return res.status(404).json({ error: 'Address not found' })
+
+      return res.status(201).json()
     } catch (error) {
-      this.handleError(error, res);
+      this.handleError(error, res)
     }
   }
 }
