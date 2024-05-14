@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { AddressEntity, CreateAddressDto, UpdateAddressDto } from '../domain'
+import { AddressEntity, CreateAddressDto, PaginationDto, SelectAddressDto, UpdateAddressDto } from '../domain'
 import { Controller } from './controller'
 
 export class AddressController extends Controller<AddressEntity> {
@@ -18,7 +18,11 @@ export class AddressController extends Controller<AddressEntity> {
 
   getAll = async (req: Request, res: Response) => {
     try {
-      const result = await this.repository.getAll()
+      const [_, selectAddressDto] = SelectAddressDto.select(req.query)
+      const [error, paginationDto] = PaginationDto.create(req.query)
+      if (error) return res.status(400).json({ error })
+
+      const result = await this.repository.getAll(selectAddressDto, paginationDto)
 
       return res.json(result)
     } catch (error) {

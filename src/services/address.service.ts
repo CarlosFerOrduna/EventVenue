@@ -1,4 +1,11 @@
-import { AddressEntity, CreateAddressDto, CustomError, UpdateAddressDto } from '../domain'
+import {
+  AddressEntity,
+  CreateAddressDto,
+  CustomError,
+  PaginationDto,
+  SelectAddressDto,
+  UpdateAddressDto,
+} from '../domain'
 import { Service } from './service'
 
 export class AddressService extends Service<AddressEntity> {
@@ -10,8 +17,13 @@ export class AddressService extends Service<AddressEntity> {
     return AddressEntity.fromObject(result)
   }
 
-  async getAll(): Promise<AddressEntity[]> {
-    const results = await this.prismaClient.address.findMany()
+  async getAll(selectDto: SelectAddressDto, paginationDto: PaginationDto): Promise<AddressEntity[]> {
+    const { page, limit } = paginationDto
+    const results = await this.prismaClient.address.findMany({
+      where: { ...selectDto.props },
+      skip: (page - 1) * limit,
+      take: limit,
+    })
 
     return results.map(AddressEntity.fromObject)
   }

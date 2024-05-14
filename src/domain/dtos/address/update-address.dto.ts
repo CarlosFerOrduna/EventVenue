@@ -1,23 +1,9 @@
 import { Prisma } from '@prisma/client'
 import { Dto } from '../dto'
-
-interface Props {
-  streetName?: string
-  streetNumber?: number
-  zipCode?: string
-  neighborhood?: string
-  floor?: string
-  apartment?: string
-  city?: string
-  state?: string
-  country?: string
-  createdAt?: Date
-  updatedAt?: Date
-  deletedAt?: Date
-}
+import { Address } from '../../interfaces'
 
 export class UpdateAddressDto extends Dto {
-  private constructor(public idAddress: string, public props: Props) {
+  private constructor(public idAddress: string, public props: Address) {
     super()
   }
 
@@ -26,10 +12,10 @@ export class UpdateAddressDto extends Dto {
 
     if (!idAddress) return ['Missing id']
 
-    const query: Partial<Props> = {}
+    const query: Partial<Address> = {}
 
     for (const key of Object.keys(props)) {
-      if (Object.keys(Prisma.AddressScalarFieldEnum).includes(key)) query[key as keyof Props] = props[key]
+      if (Object.keys(Prisma.AddressScalarFieldEnum).includes(key)) query[key as keyof Address] = props[key]
     }
 
     return [undefined, new UpdateAddressDto(idAddress, query)]

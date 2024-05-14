@@ -1,4 +1,4 @@
-import { AddressEntity, CreateAddressDto, UpdateAddressDto } from '../domain'
+import { AddressEntity, CreateAddressDto, Dto, PaginationDto, UpdateAddressDto } from '../domain'
 import { Repository } from './repository'
 
 export class AddressRepository extends Repository<AddressEntity> {
@@ -6,8 +6,8 @@ export class AddressRepository extends Repository<AddressEntity> {
     return await this.service.create(entityDto)
   }
 
-  async getAll(): Promise<AddressEntity[]> {
-    return this.service.getAll()
+  async getAll(selectDto: Dto, paginationDto?: PaginationDto): Promise<AddressEntity[]> {
+    return this.service.getAll(selectDto, paginationDto)
   }
 
   async getById(id: string): Promise<AddressEntity> {

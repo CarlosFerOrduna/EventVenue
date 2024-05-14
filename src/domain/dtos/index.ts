@@ -1,4 +1,5 @@
 export * from './address/create-address.dto'
+export * from './address/select-address.dto'
 export * from './address/update-address.dto'
 export * from './availability/create-availability.dto'
 export * from './dto'
