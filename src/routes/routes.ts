@@ -18,7 +18,7 @@ export class AppRoutes {
     router.use('/api/reservation', ReservationRoutes.routes)
     router.use('/api/user', UserRoutes.routes)
     router.use('/api/venue', VenueRoutes.routes)
-    router.use('*', (req: Request, res: Response) => console.log(req.method))
+    router.use('*', (req: Request, res: Response) => res.status(404).json({ error: 'not found' }))
 
     return router
   }
