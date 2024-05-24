@@ -1,7 +1,4 @@
-export enum Role {
-  USER = 'USER',
-  ADMIN = 'ADMIN',
-}
+import { Role } from './role.enum'
 
 export interface User {
   idUser: string
