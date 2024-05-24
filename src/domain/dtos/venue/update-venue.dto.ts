@@ -1,23 +1,23 @@
-import { userSchema } from '../../../config'
-import { User } from '../../interfaces'
+import { venueSchema } from '../../../config'
+import { Venue } from '../../interfaces'
 import { Dto } from '../dto'
 
-export class UpdateUserDto extends Dto {
-  private constructor(public idUser: string, public props: Partial<User>) {
+export class UpdateVenueDto extends Dto {
+  private constructor(public idVenue: string, public props: Partial<Venue>) {
     super()
   }
 
-  static create(obj: { [key: string]: any }): [string?, UpdateUserDto?] {
-    const { idUser, ...props } = obj
+  static create(obj: { [key: string]: any }): [string?, UpdateVenueDto?] {
+    const { idVenue, ...props } = obj
 
-    if (!idUser) return ['Missing id']
+    if (!idVenue) return ['Missing id']
 
-    const query: Partial<User> = {}
+    const query: Partial<Venue> = {}
 
     for (const key of Object.keys(props)) {
-      if (Object.keys(userSchema).includes(key)) query[key as keyof User] = props[key]
+      if (Object.keys(venueSchema).includes(key)) query[key as keyof Venue] = props[key]
     }
 
-    return [undefined, new UpdateUserDto(idUser, query)]
+    return [undefined, new UpdateVenueDto(idVenue, query)]
   }
 }
