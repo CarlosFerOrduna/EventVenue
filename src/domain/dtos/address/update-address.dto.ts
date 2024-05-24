@@ -1,9 +1,9 @@
-import { Prisma } from '@prisma/client'
-import { Dto } from '../dto'
+import { availabilitySchema } from '../../../config'
 import { Address } from '../../interfaces'
+import { Dto } from '../dto'
 
 export class UpdateAddressDto extends Dto {
-  private constructor(public idAddress: string, public props: Address) {
+  private constructor(public idAddress: string, public props: Partial<Address>) {
     super()
   }
 
@@ -15,7 +15,7 @@ export class UpdateAddressDto extends Dto {
     const query: Partial<Address> = {}
 
     for (const key of Object.keys(props)) {
-      if (Object.keys(Prisma.AddressScalarFieldEnum).includes(key)) query[key as keyof Address] = props[key]
+      if (Object.keys(availabilitySchema).includes(key)) query[key as keyof Address] = props[key]
     }
 
     return [undefined, new UpdateAddressDto(idAddress, query)]
