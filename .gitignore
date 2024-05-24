@@ -3,3 +3,4 @@
 /mysql/
 /package-lock.json
 migrations/
+.env
