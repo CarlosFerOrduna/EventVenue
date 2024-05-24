@@ -1,15 +1,6 @@
 import { CustomError } from '../errors'
 import { Entity } from './entity'
 
-export interface VenueAvailability {
-  idVenueAvailability: string
-  idVenue: string
-  idAvailability: string
-  createdAt: Date
-  updatedAt: Date
-  deletedAt?: Date
-}
-
 export class VenueAvailabilityEntity extends Entity {
   constructor(
     public idVenueAvailability: string,

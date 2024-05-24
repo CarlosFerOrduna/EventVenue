@@ -1,17 +1,6 @@
 import { CustomError } from '../errors'
 import { Entity } from './entity'
 
-export interface Availability {
-  idAvailability: string
-  dateOfWeek: number
-  startTime: Date
-  endTime: Date
-  createdAt: Date
-  updatedAt: Date
-  description?: string
-  deletedAt?: Date
-}
-
 export class AvailabilityEntity extends Entity {
   constructor(
     public idAvailability: string,
