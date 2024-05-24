@@ -1,4 +1,4 @@
-import { Dto, EventTypeEntity } from '../domain'
+import { Dto, EventTypeEntity, PaginationDto } from '../domain'
 import { Repository } from './repository'
 
 export class EventTypeRepository extends Repository<EventTypeEntity> {
@@ -6,8 +6,8 @@ export class EventTypeRepository extends Repository<EventTypeEntity> {
     return this.service.create(entityDto)
   }
 
-  async getAll(): Promise<EventTypeEntity[]> {
-    return this.service.getAll()
+  async getAll(selectDto: Dto, paginationDto?: PaginationDto): Promise<EventTypeEntity[]> {
+    return this.service.getAll(selectDto, paginationDto)
   }
 
   async getById(id: string): Promise<EventTypeEntity> {

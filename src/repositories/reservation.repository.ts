@@ -1,4 +1,4 @@
-import { Dto, ReservationEntity } from '../domain'
+import { Dto, PaginationDto, ReservationEntity } from '../domain'
 import { Repository } from './repository'
 
 export class ReservationRepository extends Repository<ReservationEntity> {
@@ -6,8 +6,8 @@ export class ReservationRepository extends Repository<ReservationEntity> {
     return this.service.create(entityDto)
   }
 
-  async getAll(): Promise<ReservationEntity[]> {
-    return this.service.getAll()
+  async getAll(selectDto: Dto, paginationDto?: PaginationDto): Promise<ReservationEntity[]> {
+    return this.service.getAll(selectDto, paginationDto)
   }
 
   async getById(id: string): Promise<ReservationEntity> {

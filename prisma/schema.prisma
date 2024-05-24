@@ -155,6 +155,9 @@ model ReservationEventFeature {
   idReservationEventFeature String       @id @default(uuid()) @db.VarChar(36)
   idReservation             String       @db.VarChar(36)
   idEventFeature            String       @db.VarChar(36)
+  createdAt                 DateTime     @default(now())
+  updatedAt                 DateTime     @updatedAt
+  deletedAt                 DateTime?
   eventFeature              EventFeature @relation(fields: [idEventFeature], references: [idEventFeature])
   reservation               Reservation  @relation(fields: [idReservation], references: [idReservation])
 }

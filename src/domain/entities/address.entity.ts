@@ -1,6 +1,22 @@
 import { CustomError } from '../errors'
 import { Entity } from './entity'
 
+export interface Address {
+  idAddress: string
+  streetName?: string
+  streetNumber?: number
+  zipCode?: string
+  neighborhood?: string
+  floor?: string
+  apartment?: string
+  city?: string
+  state?: string
+  country?: string
+  createdAt: Date
+  updatedAt: Date
+  deletedAt?: Date
+}
+
 export class AddressEntity extends Entity {
   constructor(
     public idAddress: string,

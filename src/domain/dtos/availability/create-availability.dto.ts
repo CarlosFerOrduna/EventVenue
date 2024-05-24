@@ -14,7 +14,7 @@ export class CreateAvailabilityDto extends Dto {
     const { description, dateOfWeek, startTime, endTime } = props
 
     if (!!description && description.trim().length < 1) return ['description is not valid']
-    if (!dateOfWeek || dateOfWeek.trim().length < 1) return ['dateOfWeek is not valid']
+    if (!dateOfWeek || isNaN(dateOfWeek)) return ['dateOfWeek is not valid']
     if (!startTime || startTime.trim().length < 1) return ['startTime is not valid']
     if (!endTime || endTime.trim().length < 1) return ['endTime is not valid']
 

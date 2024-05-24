@@ -18,7 +18,7 @@ export class AddressController extends Controller<AddressEntity> {
 
   getAll = async (req: Request, res: Response) => {
     try {
-      const [_, selectAddressDto] = SelectAddressDto.select(req.query)
+      const [, selectAddressDto] = SelectAddressDto.create(req.query)
       const [error, paginationDto] = PaginationDto.create(req.query)
       if (error) return res.status(400).json({ error })
 
@@ -46,7 +46,7 @@ export class AddressController extends Controller<AddressEntity> {
 
   updateById = async (req: Request, res: Response) => {
     try {
-      const [error, updateAddressDto] = UpdateAddressDto.update({ idAddress: req.params.id, ...req.body })
+      const [error, updateAddressDto] = UpdateAddressDto.create({ idAddress: req.params.id, ...req.body })
       if (error) return res.status(400).json({ error })
 
       const result = await this.repository.updateById(updateAddressDto!)

@@ -6,7 +6,6 @@ export abstract class Controller<T extends Entity> {
   constructor(public readonly repository: Repository<T>) {}
 
   public handleError = (error: unknown, res: Response) => {
-    console.log({ error })
     if (error instanceof CustomError) {
       return res.status(error.statusCode).json({ error: error.message })
     }

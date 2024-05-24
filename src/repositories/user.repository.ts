@@ -1,4 +1,4 @@
-import { UserEntity, Dto } from '../domain'
+import { Dto, PaginationDto, UserEntity } from '../domain'
 import { Repository } from './repository'
 
 export class UserRepository extends Repository<UserEntity> {
@@ -6,8 +6,8 @@ export class UserRepository extends Repository<UserEntity> {
     return this.service.create(entityDto)
   }
 
-  async getAll(): Promise<UserEntity[]> {
-    return this.service.getAll()
+  async getAll(selectDto: Dto, paginationDto?: PaginationDto): Promise<UserEntity[]> {
+    return this.service.getAll(selectDto, paginationDto)
   }
 
   async getById(id: string): Promise<UserEntity> {

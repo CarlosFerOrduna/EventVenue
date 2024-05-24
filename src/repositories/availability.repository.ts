@@ -1,4 +1,4 @@
-import { AvailabilityEntity, Dto } from '../domain'
+import { AvailabilityEntity, Dto, PaginationDto } from '../domain'
 import { Repository } from './repository'
 
 export class AvailabilityRepository extends Repository<AvailabilityEntity> {
@@ -6,8 +6,8 @@ export class AvailabilityRepository extends Repository<AvailabilityEntity> {
     return this.service.create(entityDto)
   }
 
-  async getAll(): Promise<AvailabilityEntity[]> {
-    return this.service.getAll()
+  async getAll(selectDto: Dto, paginationDto?: PaginationDto): Promise<AvailabilityEntity[]> {
+    return this.service.getAll(selectDto, paginationDto)
   }
 
   async getById(id: string): Promise<AvailabilityEntity> {

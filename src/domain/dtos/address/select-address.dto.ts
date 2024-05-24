@@ -7,7 +7,7 @@ export class SelectAddressDto extends Dto {
     super()
   }
 
-  static select(obj: { [key: string]: any }): [string?, SelectAddressDto?] {
+  static create(obj: { [key: string]: any }): [string?, SelectAddressDto?] {
     const query: Partial<Address> = {}
 
     for (const key of Object.keys(obj)) {

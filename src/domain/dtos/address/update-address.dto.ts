@@ -7,7 +7,7 @@ export class UpdateAddressDto extends Dto {
     super()
   }
 
-  static update(obj: { [key: string]: any }): [string?, UpdateAddressDto?] {
+  static create(obj: { [key: string]: any }): [string?, UpdateAddressDto?] {
     const { idAddress, ...props } = obj
 
     if (!idAddress) return ['Missing id']
